@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nedräkning</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<h1>Nedräkning slut på jobb</h1>
+
+	<p>Sista dagen 2026-05-12</p>
+	<div id="timer"></div>
+
+	<script>
+		const targetDate = new Date("2026-05-12");
+
+		function countWeekdays(start, end){
+			let count = 0;
+			let current = new Date(start);
+
+			while (current < end) {
+				const day = current.getDay();
+				if (day !== 0 && day !== 6) {
+					count++;
+				}
+				current.setDate(current.getDate() + 1);
+			}
+			return count;
+		}
+
+		function updateTimer() {
+			const now = new Date;
+
+			if (now >= targetDate) {
+				document.getElementById("timer").textContent = "klart!";
+				return;
+			}
+			const weekdaysLeft = countWeekdays(now, targetDate);
+			
+			const correctWeekdays = weekdaysLeft - 6;
+
+			document.getElementById("timer").textContent = "arbetsdagar kvar: " + correctWeekdays;
+
+			if (correctWeekdays <= 0) {
+				alert("SISTA DAGEN HÅLL UT!")
+				
+			}
+		}
+
+
+		updateTimer();
+		setInterval(updateTimer, 60 * 1000);
+	</script>
+	
+</body>
+</html>
