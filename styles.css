@@ -1,0 +1,16 @@
+body {
+	background-color: black;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#timer{
+	font-size: 2rem;
+	margin-top: 20px;
+	color: red;
+}
+
+h1, p {
+	color: white;
+}
